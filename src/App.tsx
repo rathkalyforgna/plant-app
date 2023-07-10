@@ -7,11 +7,12 @@ import Icon from 'react-native-vector-icons/Entypo';
 import {theme} from './constants';
 import {Settings} from './screens/Settings';
 import {Welcome} from './screens/welcome';
-import {Login} from './screens/login';
+import {Login} from './screens/Login';
 import {Signup} from './screens/Signup';
-import {Browse} from './screens/browse';
+import {Browse} from './screens/Browse';
 import {Explore} from './screens/Explore';
 import {Product} from './screens/Product';
+import {Forgot} from './screens/Forgot';
 
 const Stack = createStackNavigator();
 
@@ -48,6 +49,7 @@ export const App = () => {
           }}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Signup" component={Signup} />
+          <Stack.Screen name="Forgot" component={Forgot} />
           <Stack.Screen
             name="Welcome"
             component={Welcome}

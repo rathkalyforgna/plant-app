@@ -8,7 +8,7 @@ import {
   View,
   Pressable,
 } from 'react-native';
-import {theme, mocks} from '../../constants';
+import {theme, mocks} from '../constants';
 import {useNavigation} from '@react-navigation/native';
 
 const {width} = Dimensions.get('window');

@@ -8,10 +8,10 @@ import {
   Text,
   View,
 } from 'react-native';
-import {theme} from '../../constants';
+import {theme} from '../constants';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
-import {Input} from '../../components/Input';
+import {Input} from '../components/Input';
 
 const VALID_EMAIL = 'example@mail.com';
 const VALID_PASSWORD = 'secret';
