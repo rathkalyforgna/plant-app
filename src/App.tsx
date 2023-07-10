@@ -9,6 +9,7 @@ import {Welcome} from './screens/welcome';
 import {Login} from './screens/login';
 import {Signup} from './screens/Signup';
 import {Browse} from './screens/browse';
+import {Explore} from './screens/Explore';
 
 const Stack = createStackNavigator();
 
@@ -17,7 +18,7 @@ export const App = () => {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Settings"
+          initialRouteName="Welcome"
           screenOptions={{
             headerShadowVisible: false,
             headerStyle: {
@@ -46,6 +47,7 @@ export const App = () => {
           />
           <Stack.Screen name="Browse" component={Browse} />
           <Stack.Screen name="Settings" component={Settings} />
+          <Stack.Screen name="Explore" component={Explore} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

@@ -11,13 +11,13 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {theme} from '../constants';
 
 type Props = TextInputProps & {
-  label: string;
+  label?: string;
   email?: string;
   phone?: string;
   number?: string;
   secure?: boolean;
-  error: any;
-  rightLabel?: string;
+  error?: any;
+  rightLabel?: any;
   rightStyle?: any;
   onRightPress?: any;
 };

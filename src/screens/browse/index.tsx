@@ -11,20 +11,15 @@ import {
 import {theme, mocks} from '../../constants';
 import {useNavigation} from '@react-navigation/native';
 
-type Props = {
-  categories: any;
-};
-
 const {width} = Dimensions.get('window');
 
-export const Browse = (props: Props) => {
+export const Browse = () => {
   const profile = mocks.profile;
   const navigation = useNavigation<any>();
   const [active, setActive] = React.useState('Products');
   const [categories, setCategories] = React.useState(mocks.categories);
 
   const handleTab = (tab: string) => {
-    const {categories} = props;
     const filtered = categories.filter(category =>
       category.tags.includes(tab.toLowerCase()),
     );
