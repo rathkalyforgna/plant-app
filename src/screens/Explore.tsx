@@ -3,13 +3,12 @@ import {
   Animated,
   Dimensions,
   Image,
+  Pressable,
   StyleSheet,
   ScrollView,
-  Pressable,
-  View,
   Text,
+  View,
 } from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
@@ -21,7 +20,6 @@ const {width, height} = Dimensions.get('window');
 export const Explore = () => {
   const images = mocks.explore;
   const mainImage = images[0];
-  const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
   const [searchFocus] = React.useState(new Animated.Value(0.6));
   const [searchString, setSearchString] = React.useState<string>();
@@ -123,7 +121,7 @@ export const Explore = () => {
       {/* {this.renderFooter()} */}
       <LinearGradient
         locations={[0.5, 1]}
-        style={[styles.footer, {bottom: insets.bottom}]}
+        style={[styles.footer]}
         colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.6)']}>
         <Pressable style={[styles.button, {width: width / 2.678}]}>
           <LinearGradient
@@ -152,7 +150,7 @@ const styles = StyleSheet.create({
     borderRadius: theme.sizes.radius,
     height: theme.sizes.base * 3,
     justifyContent: 'center',
-    marginVertical: theme.sizes.padding / 3,
+    marginVertical: theme.sizes.padding,
   },
   header: {
     paddingHorizontal: theme.sizes.base * 2,
@@ -202,7 +200,7 @@ const styles = StyleSheet.create({
     overflow: 'visible',
     alignItems: 'center',
     justifyContent: 'center',
-    height: height * 0.1,
+    // height: height * 0.1,
     width,
     paddingBottom: theme.sizes.base * 4,
   },
