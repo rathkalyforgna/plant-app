@@ -17,7 +17,7 @@ export const App = () => {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Welcome"
+          initialRouteName="Settings"
           screenOptions={{
             headerShadowVisible: false,
             headerStyle: {
