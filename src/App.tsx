@@ -6,9 +6,9 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Entypo';
 import {theme} from './constants';
 import {Settings} from './screens/Settings';
-import {Welcome} from './screens/welcome';
+import {Welcome} from './screens/Welcome';
 import {Login} from './screens/Login';
-import {Signup} from './screens/Signup';
+import {SignUp} from './screens/Signup';
 import {Browse} from './screens/Browse';
 import {Explore} from './screens/Explore';
 import {Product} from './screens/Product';
@@ -21,7 +21,7 @@ export const App = () => {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Welcome"
+          initialRouteName="Browse"
           screenOptions={{
             headerShadowVisible: false,
             headerStyle: {
@@ -48,7 +48,7 @@ export const App = () => {
             cardStyle: {backgroundColor: theme.colors.white},
           }}>
           <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Signup" component={Signup} />
+          <Stack.Screen name="Signup" component={SignUp} />
           <Stack.Screen name="Forgot" component={Forgot} />
           <Stack.Screen
             name="Welcome"

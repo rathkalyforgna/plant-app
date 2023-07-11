@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {theme, mocks} from '../constants';
 import {useNavigation} from '@react-navigation/native';
+import {Badge, Card} from '../components';
 
 const {width} = Dimensions.get('window');
 
@@ -75,7 +76,6 @@ export const Browse = () => {
         showsVerticalScrollIndicator={false}
         style={{paddingVertical: theme.sizes.base * 2}}>
         <View
-          //  flex={false} row space="between"
           style={[
             styles.categories,
             {flexDirection: 'row', justifyContent: 'space-between'},
@@ -85,27 +85,11 @@ export const Browse = () => {
               key={category.name}
               onPress={() => navigation.navigate('Explore', {category})}>
               {/* Card */}
-              <View
-                style={[
-                  styles.category,
-                  {
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    ...theme.shadow,
-                  },
-                ]}>
+              <Card style={styles.category}>
                 {/* Badge */}
-                <View
-                  style={{
-                    alignContent: 'center',
-                    justifyContent: 'center',
-                    marginBottom: 15,
-                    width: 50,
-                    height: 50,
-                    backgroundColor: 'rgba(41,216,143,0.20)',
-                  }}>
+                <Badge>
                   <Image source={category.image} />
-                </View>
+                </Badge>
                 <Text style={{fontWeight: theme.weights.medium, height: 20}}>
                   {category.name}
                 </Text>
@@ -116,7 +100,7 @@ export const Browse = () => {
                   }}>
                   {category.count} products
                 </Text>
-              </View>
+              </Card>
             </Pressable>
           ))}
         </View>

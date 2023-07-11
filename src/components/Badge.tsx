@@ -2,20 +2,13 @@ import React from 'react';
 import {StyleSheet, View, ViewProps} from 'react-native';
 import {theme} from '../constants';
 
-type Props = ViewProps & {
-  size?: number;
-  color?: string;
-};
+type Props = ViewProps;
 
-export const Badge = ({children, style, size, color, ...props}: Props) => {
+export const Badge = ({children, ...props}: Props) => {
+  // const badgeStyles = [styles.badge, style];
+
   return (
-    <View
-      style={[
-        styles.badge,
-        {backgroundColor: color, height: size, width: size, borderRadius: size},
-        style,
-      ]}
-      {...props}>
+    <View style={styles.badge} {...props}>
       {children}
     </View>
   );
@@ -23,10 +16,12 @@ export const Badge = ({children, style, size, color, ...props}: Props) => {
 
 const styles = StyleSheet.create({
   badge: {
-    justifyContent: 'center',
     alignItems: 'center',
-    height: theme.sizes.base,
-    width: theme.sizes.base,
-    borderRadius: theme.sizes.base, //theme.sizes.border,
+    justifyContent: 'center',
+    height: 50,
+    width: 50,
+    backgroundColor: 'rgba(41, 216, 143, 0.20)',
+    borderRadius: theme.sizes.padding,
+    marginBottom: 15,
   },
 });

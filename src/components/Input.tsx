@@ -12,8 +12,8 @@ import {theme} from '../constants';
 
 type Props = TextInputProps & {
   label?: string;
-  email?: string;
-  phone?: string;
+  email?: boolean;
+  phone?: boolean;
   number?: string;
   secure?: boolean;
   error?: any;
