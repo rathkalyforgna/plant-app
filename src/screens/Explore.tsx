@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
+// import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
 import {Input} from '../components';
 import {theme, mocks} from '../constants';
@@ -20,6 +21,7 @@ const {width, height} = Dimensions.get('window');
 export const Explore = () => {
   const images = mocks.explore;
   const mainImage = images[0];
+  // const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
   const [searchFocus] = React.useState(new Animated.Value(0.6));
   const [searchString, setSearchString] = React.useState<string>();
@@ -36,24 +38,16 @@ export const Explore = () => {
 
   return (
     <View>
-      <View
-        style={[
-          {
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          },
-          styles.header,
-        ]}>
+      <View style={styles.header}>
         <Text style={{...theme.fonts.h1, fontWeight: theme.weights.bold}}>
           Explore
         </Text>
-        {/* {this.renderSearch()} */}
+        {/* renderSearch */}
         <Animated.View
-          style={[
-            {flex: searchFocus ? 1 : 0, justifyContent: 'center'},
-            styles.search,
-          ]}>
+          style={{
+            flex: searchFocus ? 0.6 : 0,
+            justifyContent: 'center',
+          }}>
           <Input
             placeholder="Search"
             placeholderTextColor={theme.colors.gray2}
@@ -77,7 +71,7 @@ export const Explore = () => {
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false} style={styles.explore}>
-        {/* {this.renderExplore()} */}
+        {/* renderExplore */}
         <View style={{marginBottom: height / 3}}>
           <Pressable
             style={[styles.image, styles.mainImage]}
@@ -87,13 +81,7 @@ export const Explore = () => {
               style={[styles.image, styles.mainImage]}
             />
           </Pressable>
-          <View
-            style={{
-              flex: 1,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              flexWrap: 'wrap',
-            }}>
+          <View style={styles.images}>
             {images.slice(1).map((img, index) => {
               const sizes = Image.resolveAssetSource(img);
               const fullWidth = width - theme.sizes.padding * 2.5;
@@ -118,10 +106,10 @@ export const Explore = () => {
         </View>
       </ScrollView>
 
-      {/* {this.renderFooter()} */}
+      {/* renderFooter */}
       <LinearGradient
         locations={[0.5, 1]}
-        style={[styles.footer]}
+        style={styles.footer}
         colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.6)']}>
         <Pressable style={[styles.button, {width: width / 2.678}]}>
           <LinearGradient
@@ -130,14 +118,7 @@ export const Explore = () => {
             locations={[0.1, 0.9]}
             colors={[theme.colors.primary, theme.colors.secondary]}
             style={styles.button}>
-            <Text
-              style={{
-                fontWeight: theme.weights.bold,
-                color: theme.colors.white,
-                textAlign: 'center',
-              }}>
-              Filter
-            </Text>
+            <Text style={styles.filterText}>Filter</Text>
           </LinearGradient>
         </Pressable>
       </LinearGradient>
@@ -153,12 +134,11 @@ const styles = StyleSheet.create({
     marginVertical: theme.sizes.padding,
   },
   header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     paddingHorizontal: theme.sizes.base * 2,
     paddingBottom: theme.sizes.base * 2,
-  },
-  search: {
-    height: theme.sizes.base * 2,
-    width: width - theme.sizes.base * 2,
   },
   searchInput: {
     fontSize: theme.sizes.caption,
@@ -181,6 +161,12 @@ const styles = StyleSheet.create({
   explore: {
     marginHorizontal: theme.sizes.padding * 1.25,
   },
+  images: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+  },
   image: {
     minHeight: 100,
     maxHeight: 130,
@@ -199,9 +185,14 @@ const styles = StyleSheet.create({
     left: 0,
     overflow: 'visible',
     alignItems: 'center',
-    justifyContent: 'center',
-    // height: height * 0.1,
+    // justifyContent: 'center',
+    height: height * 0.25,
     width,
     paddingBottom: theme.sizes.base * 4,
+  },
+  filterText: {
+    fontWeight: theme.weights.bold,
+    color: theme.colors.white,
+    textAlign: 'center',
   },
 });

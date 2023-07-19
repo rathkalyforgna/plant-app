@@ -8,8 +8,8 @@ import {
   View,
   Pressable,
 } from 'react-native';
-import {theme, mocks} from '../constants';
 import {useNavigation} from '@react-navigation/native';
+import {theme, mocks} from '../constants';
 import {Badge, Card} from '../components';
 
 const {width} = Dimensions.get('window');
@@ -21,7 +21,7 @@ export const Browse = () => {
   const [categories, setCategories] = React.useState(mocks.categories);
 
   const handleTab = (tab: string) => {
-    const filtered = categories.filter(category =>
+    const filtered = mocks.categories.filter(category =>
       category.tags.includes(tab.toLowerCase()),
     );
 
@@ -33,15 +33,7 @@ export const Browse = () => {
 
   return (
     <View>
-      <View
-        style={[
-          {
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          },
-          styles.header,
-        ]}>
+      <View style={styles.header}>
         <Text
           style={{fontSize: theme.sizes.h1, fontWeight: theme.weights.bold}}>
           Browse
@@ -51,7 +43,7 @@ export const Browse = () => {
         </Pressable>
       </View>
 
-      <View style={[styles.tabs, {flexDirection: 'row'}]}>
+      <View style={styles.tabs}>
         {tabs.map(tab => {
           const isActive = active === tab;
           return (
@@ -61,8 +53,6 @@ export const Browse = () => {
               style={[styles.tab, isActive ? styles.active : null]}>
               <Text
                 style={{
-                  fontSize: 16,
-                  fontWeight: theme.weights.semibold,
                   color: isActive ? theme.colors.secondary : theme.colors.gray,
                 }}>
                 {tab}
@@ -75,11 +65,7 @@ export const Browse = () => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{paddingVertical: theme.sizes.base * 2}}>
-        <View
-          style={[
-            styles.categories,
-            {flexDirection: 'row', justifyContent: 'space-between'},
-          ]}>
+        <View style={styles.categories}>
           {categories.map(category => (
             <Pressable
               key={category.name}
@@ -113,6 +99,9 @@ export default Browse;
 
 const styles = StyleSheet.create({
   header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     paddingHorizontal: theme.sizes.base * 2,
   },
   avatar: {
@@ -120,6 +109,7 @@ const styles = StyleSheet.create({
     width: theme.sizes.base * 2.2,
   },
   tabs: {
+    flexDirection: 'row',
     borderBottomColor: theme.colors.gray2,
     borderBottomWidth: StyleSheet.hairlineWidth,
     marginVertical: theme.sizes.base,
@@ -129,11 +119,17 @@ const styles = StyleSheet.create({
     marginRight: theme.sizes.base * 2,
     paddingBottom: theme.sizes.base,
   },
+  tabText: {
+    fontSize: 16,
+    fontWeight: theme.weights.semibold,
+  },
   active: {
     borderBottomColor: theme.colors.secondary,
     borderBottomWidth: 3,
   },
   categories: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     flexWrap: 'wrap',
     paddingHorizontal: theme.sizes.base * 2,
     marginBottom: theme.sizes.base * 3.5,
